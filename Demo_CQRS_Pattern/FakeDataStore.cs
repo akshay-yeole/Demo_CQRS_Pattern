@@ -36,6 +36,11 @@
             return await Task.FromResult(_products);
         }
 
+        public async Task<Product> GetProductByIdAsync(int id)
+        {
+            return await Task.FromResult(_products.Single(product => product.Id == id));
+        }
+
         public async Task AddProductAsync(Product model)
         {
             _products.Add(model);
@@ -44,7 +49,7 @@
 
         public async Task DeleteProductAsync(int id)
         {
-            var model = _products.Find(x => x.Id == id);
+            var model = _products.Single(product => product.Id == id);
             _products.Remove(model);
             await Task.CompletedTask;
         }
