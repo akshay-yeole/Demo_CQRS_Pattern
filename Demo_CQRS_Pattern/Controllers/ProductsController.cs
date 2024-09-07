@@ -1,4 +1,5 @@
 using Demo_CQRS_Pattern.Commands;
+using Demo_CQRS_Pattern.Notifications;
 using Demo_CQRS_Pattern.Quries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -37,6 +38,7 @@ namespace Demo_CQRS_Pattern.Controllers
         {
             var query = new AddProductCommand(product);
             var result = await _sender.Send(query);
+
             return CreatedAtRoute("GetProductById", new { id = result.Id }, result);
         }
 
