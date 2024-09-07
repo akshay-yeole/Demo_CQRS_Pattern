@@ -13,3 +13,7 @@
     ```csharp
     builder.Services.AddMediatR(config => config.RegisterServicesFromAssemblies(typeof(Program).Assembly));
     ```
+
+## Enable Behavior in application
+```builder.Services.AddSingleton(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviour<,>));
+```
